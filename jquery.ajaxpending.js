@@ -25,22 +25,22 @@ jQuery.fn.ajaxPending = function(url, override_css) {
         "background-position": "50% 10%"
     }
 
-    var css = $.extend({}, default_css, override_css);
-
     return this.each(function() {
-        var $this = $(this);
-        var $spinner = null;
+        var calc_css = {
+            "width": $(this).width() +"px",
+            "height": $(this).height() +"px",
+            "top": $(this).offset().top + "px",
+            "left": $(this).offset().left + "px"
+        }
+
+        var css = $.extend({}, default_css, calc_css, override_css);
+
+        var $spinner = $('<div class="ajax-pending-container"></div>');
+        
+        $spinner.css(css);
 
         $(document).ajaxSend(function(event, request, options) {
             if(options.url === url) {
-                $spinner = $('<div class="ajax-pending-container"></div>');
-                $spinner.css(css)
-                .css({
-                    "width": $this.width() +"px",
-                    "height": $this.height() +"px",
-                    "top": $this.offset().top + "px",
-                    "left": $this.offset().left + "px"
-                });
                 $spinner.appendTo("body");
             }
         });
