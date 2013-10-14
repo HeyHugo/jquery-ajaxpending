@@ -53,7 +53,7 @@ jQuery.fn.ajaxPending = function(url, options) {
                     "top": $target.offset().top + "px",
                     "left": $target.offset().left + "px"
                 });
-                $spinner.css("left", ($container.width()/2) + ($spinner.width()/2));
+                $spinner.css("left", ($container.width()/2) - ($spinner.width()/2));
                 $container.appendTo("body");
                 start_animation();
             }
