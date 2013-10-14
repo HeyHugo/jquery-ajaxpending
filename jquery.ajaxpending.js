@@ -15,7 +15,7 @@
 jQuery.fn.ajaxPending = function(url, options) {
 
     var defaults = {
-        interval: 35,
+        animation_interval: 35,
         sprite_count: 19,
         container_css: {
             "display": "block",
@@ -71,7 +71,7 @@ jQuery.fn.ajaxPending = function(url, options) {
             loop = setInterval(function() {
                 $spinner.css("background-position", "0px " + $spinner.width()*count*(-1) + "px");
                 count = (count+1) % settings.sprite_count;
-            }, settings.interval);
+            }, settings.animation_interval);
         }
 
         function stop_animation() {
