@@ -35,8 +35,8 @@ jQuery.fn.ajaxPending = function(url, override_css) {
         $(document).ajaxSend(function(event, request, options) {
             if(options.url === url) {
                 $spinner.css({
-                    "width": $target.width() +"px",
-                    "height": $target.height() +"px",
+                    "width": $target.outerWidth() +"px",
+                    "height": $target.outerHeight() +"px",
                     "top": $target.offset().top + "px",
                     "left": $target.offset().left + "px"
                 });
